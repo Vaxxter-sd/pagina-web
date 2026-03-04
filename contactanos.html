@@ -39,6 +39,135 @@
 
   <br>
 
+  <!-- CONTENIDO: INFO + FORMULARIO -->
+  <center>
+    <table width="80%" cellpadding="0" cellspacing="16">
+      <tr valign="top">
+  
+        <!-- COLUMNA IZQUIERDA: INFO -->
+        <td width="35%">
+          <table width="100%" bgcolor="#52012d" cellpadding="8" cellspacing="0">
+            <tr>
+              <td><font face="Arial" size="3" color="#ffffff"><b>Información de contacto</b></font></td>
+            </tr>
+          </table>
+          <table width="100%" bgcolor="#ffffff" border="1" bordercolor="#52012d" cellpadding="12" cellspacing="0">
+            <tr>
+              <td>
+                <font face="Arial" size="2" color="#333333">
+                  <font color="#52012d"><b>📧 Email:</b></font><br>
+                  Vaxxwh@gmail.com<br><br>
+  
+                  <font color="#52012d"><b>📞 Teléfono:</b></font><br>
+                  +55 72 29 10 90 87<br><br>
+  
+                  <font color="#52012d"><b>🕐 Horario:</b></font><br>
+                  Lun – Vie<br>9:00 – 18:00 hrs<br><br>
+  
+                  <font color="#52012d"><b>📍 Ubicación:</b></font><br>
+                  Ciudad de México, México
+                </font>
+              </td>
+            </tr>
+          </table>
+        </td>
+  
+        <!-- COLUMNA DERECHA: FORMULARIO -->
+        <td width="65%">
+          <table width="100%" bgcolor="#52012d" cellpadding="8" cellspacing="0">
+            <tr>
+              <td><font face="Arial" size="3" color="#ffffff"><b>Envíanos un mensaje</b></font></td>
+            </tr>
+          </table>
+          <table width="100%" bgcolor="#ffffff" border="1" bordercolor="#52012d" cellpadding="14" cellspacing="0">
+            <tr>
+              <td>
+                <font face="Arial" size="2">
+  
+                  <!-- FILA NOMBRE Y APELLIDO -->
+                  <table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td width="48%">
+                        <font color="#52012d"><b>Nombre: *</b></font><br>
+                        <input type="text" id="nombre" size="22" placeholder="Tu nombre" style="border:1px solid #52012d; padding:6px; width:100%;"/>
+                      </td>
+                      <td width="4%"></td>
+                      <td width="48%">
+                        <font color="#52012d"><b>Apellido:</b></font><br>
+                        <input type="text" id="apellido" size="22" placeholder="Tu apellido" style="border:1px solid #52012d; padding:6px; width:100%;"/>
+                      </td>
+                    </tr>
+                  </table>
+  
+                  <br>
+  
+                  <font color="#52012d"><b>Correo electrónico: *</b></font><br>
+                  <input type="email" id="email" size="40" placeholder="tu@correo.com" style="border:1px solid #52012d; padding:6px; width:100%;"/>
+  
+                  <br><br>
+  
+                  <font color="#52012d"><b>Asunto:</b></font><br>
+                  <select id="asunto" style="border:1px solid #52012d; padding:6px; width:100%;">
+                    <option value="">-- Selecciona un asunto --</option>
+                    <option value="pedido">Consulta sobre pedido</option>
+                    <option value="producto">Información de producto</option>
+                    <option value="devolucion">Devoluciones</option>
+                    <option value="otro">Otro</option>
+                  </select>
+  
+                  <br><br>
+  
+                  <font color="#52012d"><b>Mensaje: *</b></font><br>
+                  <textarea id="mensaje" rows="6" placeholder="Cuéntanos en qué podemos ayudarte..." style="border:1px solid #52012d; padding:6px; width:100%;"></textarea>
+  
+                  <br><br>
+  
+                  <center>
+                    <input type="button" value="  Enviar mensaje  " onclick="enviarCorreo()"
+                      style="background-color:#52012d; color:#ffffff; border:none; padding:10px 28px; font-size:14px; cursor:pointer;"/>
+                  </center>
+  
+                  <br>
+                  <center><font id="aviso" color="#1565c0"></font></center>
+  
+                </font>
+              </td>
+            </tr>
+          </table>
+        </td>
+  
+      </tr>
+    </table>
+    </center>
+  
+    <br>
+  
+  
+    <script>
+      function enviarCorreo() {
+        var nombre   = document.getElementById('nombre').value.trim();
+        var apellido = document.getElementById('apellido').value.trim();
+        var email    = document.getElementById('email').value.trim();
+        var asunto   = document.getElementById('asunto').value;
+        var mensaje  = document.getElementById('mensaje').value.trim();
+  
+        if (!nombre || !email || !mensaje) {
+          alert('Por favor completa los campos obligatorios (*).');
+          return;
+        }
+  
+        var asuntoTexto = asunto ? '[' + asunto.toUpperCase() + '] ' : '';
+        var cuerpo = 'Nombre: ' + nombre + ' ' + apellido + '\nEmail: ' + email + '\n\n' + mensaje;
+        var mailto = 'mailto:contacto@eliteshop.com'
+          + '?subject=' + encodeURIComponent(asuntoTexto + 'Mensaje desde el sitio web')
+          + '&body=' + encodeURIComponent(cuerpo);
+  
+        window.location.href = mailto;
+        document.getElementById('aviso').innerHTML = '<b>¡Listo!</b> Se abrirá tu cliente de correo para enviar el mensaje.';
+      }
+    </script>
+  
+  </body>
 
 
   <!-- PIE DE PÁGINA -->
